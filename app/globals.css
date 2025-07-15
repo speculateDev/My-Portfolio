@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+@layer base {
+  .nav-item {
+    @apply px-4 py-1.5 text-white/70 text-sm font-semibold rounded-xl hover:bg-white/5 hover:text-white/80 transition duration-300;
+  }
+
+  .nav-item.active {
+    @apply bg-white/10 text-white;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+}
