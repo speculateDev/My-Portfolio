@@ -15,14 +15,11 @@ const config: Config = {
     },
     container: {
       center: true,
-      padding: {
-        DEFAULT: "1rem",
-        md: "2rem",
-      },
     },
     extend: {
       fontFamily: {
         inter: "var(--font-inter)",
+        geist: "var(--font-geist)",
       },
     },
   },

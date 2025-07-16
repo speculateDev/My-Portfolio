@@ -11,6 +11,7 @@ export default function Page() {
       ></div>
 
       <Navbar />
+      <Hero />
     </div>
   );
 }

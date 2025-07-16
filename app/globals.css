@@ -7,6 +7,44 @@
 
 body {
   font-family: var(--font-inter), sans-serif;
+  background-color: black;
+}
+
+.font-geist {
+  font-family: var(--font-geist), sans-serif;
+}
+
+.typewriter {
+  margin-inline: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 1px solid;
+  animation: typing 9s steps(22) infinite, blink 1s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  60% {
+    width: 100%;
+  }
+
+  to {
+    width: 0;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
 }
 
 @layer base {
@@ -16,6 +54,10 @@ body {
 
   .nav-item.active {
     @apply bg-white/10 text-white;
+  }
+
+  .sm-container {
+    @apply lg:max-w-[800px] mx-auto sm:max-w-[375px] md:max-w-[650px];
   }
 }
 

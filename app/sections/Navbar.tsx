@@ -67,18 +67,9 @@ function Navbar() {
   return (
     <div className="fixed top-5 flex-center w-full z-10">
       {/* Logo */}
-<<<<<<< Updated upstream
-      <div className="left-[8%] size-10 absolute">
-        <div
-          className=" absolute -inset-2 rotate-arc"
-          style={{ transform: `rotate(60deg)` }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg">
-=======
       <div className="hidden sm:block left-[8%] size-10 absolute">
         <div className="absolute -inset-2 rotate-arc">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
->>>>>>> Stashed changes
             <path
               d="M29.465,0.038373A28,28,0,0,1,52.948,40.712L51.166,39.804A26,26,0,0,0,29.361,2.0356Z"
               className="arc-blue"
