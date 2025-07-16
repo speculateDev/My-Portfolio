@@ -67,7 +67,12 @@ function Navbar() {
   return (
     <div className="fixed top-5 flex-center w-full z-10">
       {/* Logo */}
-      <div className="hidden sm:block left-[8%] size-10 absolute">
+      <a
+        href="https://github.com/speculateDev"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hidden sm:block left-[8%] size-10 absolute cursor-pointer"
+      >
         <div className="absolute -inset-2 rotate-arc">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
             <path
@@ -94,7 +99,7 @@ function Navbar() {
           fill
           className="rounded-full"
         />
-      </div>
+      </a>
 
       <nav className="flex gap-1 bg-white/5 p-1 backdrop-blur border border-white/15 rounded-xl nav-row relative">
         <div className="indicator fixed bottom-0 h-[2.5px] bg-linear-to-r from-white/30 to-white/80 rounded-md" />
