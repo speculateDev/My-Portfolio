@@ -3,9 +3,9 @@ import React from "react";
 
 function Hero() {
   return (
-    <section className="py-32 md:py-32 lg:py-40">
-      <div className="sm-container relative">
-        <div className="badge inline-flex items-center gap-1 rounded-full absolute top-0 right-2 px-3 py-1.5 bg-sky-400/10 text-white/80 border border-sky-400/20 text-xs">
+    <section className="py-28 md:py-32 lg:py-40">
+      <div className="sm-container relative px-6 sm:px-0">
+        <div className="hidden right-[-30px] sm:inline-flex badge items-center gap-1 rounded-full absolute top-0 lg:right-2 px-3 py-1.5 bg-sky-400/10 text-white/80 border border-sky-400/20 text-xs">
           <strong className="">2+</strong> years of experience
         </div>
         <div className="flex flex-col items-center">
@@ -28,17 +28,17 @@ function Hero() {
             </p>
           </div>
 
-          <div className="font-bold text-5xl mt-8 text-white/90 text-center">
-            <h1 className="">
+          <div className="text-xl sm:text-2xl font-bold md:text-5xl mt-8 text-white/90 text-center">
+            <h1>
               Hi, I&apos;m Sidali, a frontend developer, on my path to become{" "}
             </h1>
             <span className="typewriter max-w-min inline-block">
-              a full-stack web developer.{" "}
+              a full-stack web developer.
             </span>
           </div>
 
-          <p className="text-white/40 mt-4 max-w-lg w-full text-center">
-            I specialize in crafting perfromant, responsive, aesthetically
+          <p className="text-white/40 lg:mt-4 sm:mt-2 md:mt-3 mt-1 w-full text-center text-xs  sm:text-base">
+            I specialize in crafting performant, responsive, aesthetically
             pleasing digital experiences
           </p>
         </div>

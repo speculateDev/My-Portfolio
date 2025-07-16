@@ -1,5 +1,5 @@
 function Projects() {
-  return <div id="projects">Projects</div>;
+  return <section className="py-28 md:py-32 lg:py-40" id="projects"></section>;
 }
 
 export default Projects;
