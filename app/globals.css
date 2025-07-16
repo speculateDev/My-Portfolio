@@ -26,7 +26,7 @@ body {
 }
 
 .rotate-arc {
-  animation: rotate-arc 5s linear infinite;
+  animation: rotate-arc 10s linear infinite;
 }
 
 .arc-red {

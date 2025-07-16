@@ -65,12 +65,12 @@ function Navbar() {
   }
 
   return (
-    <div className="fixed top-5 flex-center w-full z-10 container mx-auto">
+    <div className="fixed top-5 flex-center w-full z-10">
       {/* Logo */}
 <<<<<<< Updated upstream
       <div className="left-[8%] size-10 absolute">
         <div
-          className="absolute -inset-2 rotate-arc"
+          className=" absolute -inset-2 rotate-arc"
           style={{ transform: `rotate(60deg)` }}
         >
           <svg xmlns="http://www.w3.org/2000/svg">
@@ -129,7 +129,7 @@ function Navbar() {
           onClick={updateIndicator}
         >
           <Briefcase className="size-4" />
-          <span>Projects</span>
+          <span className="hidden sm:inline">Projects</span>
         </a>
         <a
           className={`nav-item tab skills-nav flex items-center gap-4 ${
@@ -139,7 +139,7 @@ function Navbar() {
           onClick={updateIndicator}
         >
           <Telescope className="size-4" />
-          <span>Skills</span>
+          <span className="hidden sm:inline">Skills</span>
         </a>
         <a
           className={`nav-item tab contact-nav flex items-center contact-nav gap-4 ${
@@ -149,7 +149,7 @@ function Navbar() {
           onClick={updateIndicator}
         >
           <Send className="size-4" />
-          <span>Contact</span>
+          <span className="hidden sm:inline">Contact</span>
         </a>
       </nav>
     </div>
