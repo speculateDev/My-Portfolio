@@ -59,11 +59,23 @@ body {
   .sm-container {
     @apply lg:max-w-[800px] mx-auto sm:max-w-[375px] md:max-w-[650px];
   }
+
+  .lg-container {
+    @apply lg:max-w-[1000px] mx-auto max-w-[470px] md:max-w-[680px];
+  }
+
+  .skills-ring {
+    @apply absolute inset-0 border-2 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-white/5 shadow-[0_0_80px_inset] shadow-white/5;
+  }
 }
 
 @layer utilities {
   .flex-center {
     @apply flex items-center justify-center;
+  }
+
+  .section-subtitle {
+    @apply bg-linear-to-r from-black to-white text-transparent bg-clip-text text-center uppercase font-bold text-sm sm:text-lg;
   }
 }
 

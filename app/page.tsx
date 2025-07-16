@@ -1,5 +1,6 @@
 import Hero from "./sections/Hero";
 import Navbar from "./sections/Navbar";
+import Projects from "./sections/Projects";
 
 export default function Page() {
   return (
@@ -12,6 +13,7 @@ export default function Page() {
 
       <Navbar />
       <Hero />
+      <Projects />
     </div>
   );
 }
