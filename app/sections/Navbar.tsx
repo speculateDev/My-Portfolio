@@ -66,6 +66,45 @@ function Navbar() {
 
   return (
     <div className="fixed top-5 flex-center w-full z-10 container mx-auto">
+      {/* Logo */}
+<<<<<<< Updated upstream
+      <div className="left-[8%] size-10 absolute">
+        <div
+          className="absolute -inset-2 rotate-arc"
+          style={{ transform: `rotate(60deg)` }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg">
+=======
+      <div className="hidden sm:block left-[8%] size-10 absolute">
+        <div className="absolute -inset-2 rotate-arc">
+          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+>>>>>>> Stashed changes
+            <path
+              d="M29.465,0.038373A28,28,0,0,1,52.948,40.712L51.166,39.804A26,26,0,0,0,29.361,2.0356Z"
+              className="arc-blue"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M51.483,43.250A28,28,0,0,1,4.5172,43.250L6.1946,42.161A26,26,0,0,0,49.805,42.161Z"
+              className="arc-red"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M3.0518,40.712A28,28,0,0,1,26.535,0.038373L26.639,2.0356A26,26,0,0,0,4.8338,39.804Z"
+              className="arc-yellow"
+              fill="currentColor"
+            ></path>
+          </svg>{" "}
+        </div>
+
+        <Image
+          src={"/profile.svg"}
+          alt="profile picture"
+          fill
+          className="rounded-full"
+        />
+      </div>
+
       <nav className="flex gap-1 bg-white/5 p-1 backdrop-blur border border-white/15 rounded-xl nav-row relative">
         <div className="indicator fixed bottom-0 h-[2.5px] bg-linear-to-r from-white/30 to-white/80 rounded-md" />
 

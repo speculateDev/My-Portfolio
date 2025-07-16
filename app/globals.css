@@ -24,3 +24,28 @@ body {
     @apply flex items-center justify-center;
   }
 }
+
+.rotate-arc {
+  animation: rotate-arc 5s linear infinite;
+}
+
+.arc-red {
+  color: #ff3f33;
+}
+
+.arc-yellow {
+  color: #ffcb61;
+}
+
+.arc-blue {
+  color: #0f828c;
+}
+
+@keyframes rotate-arc {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
