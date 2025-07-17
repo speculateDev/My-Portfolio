@@ -18,10 +18,10 @@ import Redux from "../../public/logos/redux.svg";
 
 function SkillsCard() {
   return (
-    <div className="card col-span-4">
+    <div className="card col-span-4 h-90">
       <CardHeader text="My Tools" />
 
-      <p className="text-white/40 text-sm mt-1 mb-12">
+      <p className="text-white/40 text-sm mt-1 mb-8">
         In case you are uncomfortable with rotating icons...
       </p>
 
