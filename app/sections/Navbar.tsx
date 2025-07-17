@@ -1,6 +1,6 @@
 "use client";
 
-import { HomeIcon, Briefcase, Telescope, Send } from "lucide-react";
+import { HomeIcon, Briefcase, Telescope, Send, Info } from "lucide-react";
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import Image from "next/image";
@@ -125,7 +125,7 @@ function Navbar() {
           onClick={updateIndicator}
         >
           <Briefcase className="size-4" />
-          <span className="hidden sm:inline">Projects</span>
+          <span className="hidden md:inline">Projects</span>
         </a>
         <a
           className={`nav-item tab skills-nav flex items-center gap-4 ${
@@ -135,8 +135,19 @@ function Navbar() {
           onClick={updateIndicator}
         >
           <Telescope className="size-4" />
-          <span className="hidden sm:inline">Skills</span>
+          <span className="hidden md:inline">Skills</span>
         </a>
+        <a
+          className={`nav-item tab contact-nav flex items-center contact-nav gap-4 ${
+            activeSection === "#about" ? "active" : ""
+          }`}
+          href="#about"
+          onClick={updateIndicator}
+        >
+          <Info className="size-4" />
+          <span className="hidden md:inline">About</span>
+        </a>
+
         <a
           className={`nav-item tab contact-nav flex items-center contact-nav gap-4 ${
             activeSection === "#contact" ? "active" : ""
@@ -145,7 +156,7 @@ function Navbar() {
           onClick={updateIndicator}
         >
           <Send className="size-4" />
-          <span className="hidden sm:inline">Contact</span>
+          <span className="hidden md:inline">Contact</span>
         </a>
       </nav>
     </div>
