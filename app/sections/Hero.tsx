@@ -3,7 +3,14 @@ import React from "react";
 
 function Hero() {
   return (
-    <section className="py-28 md:py-32 lg:py-40">
+    <section className="py-28 md:py-32 lg:py-40 relative">
+      <div className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_60%,transparent)] -z-10">
+        <div
+          className="absolute inset-0 opacity-5 -z-30"
+          style={{ backgroundImage: `url(/pattern.png)` }}
+        ></div>
+      </div>
+
       <div className="sm-container relative px-6 sm:px-0">
         <div className="hidden right-[-30px] sm:inline-flex badge items-center gap-1 rounded-full absolute top-0 lg:right-2 px-3 py-1.5 bg-sky-400/10 text-white/80 border border-sky-400/20 text-xs">
           <strong className="">2+</strong> years of experience
@@ -28,7 +35,7 @@ function Hero() {
             </p>
           </div>
 
-          <div className="text-xl sm:text-2xl font-bold md:text-5xl mt-8 text-white/90 text-center">
+          <div className="text-xl sm:text-2xl font-bold md:text-5xl mt-8 text-white/90 text-center lg:leading-15">
             <h1>
               Hi, I&apos;m Sidali, a frontend developer, on my path to become{" "}
             </h1>
