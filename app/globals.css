@@ -81,6 +81,10 @@ body {
   .section-subtitle {
     @apply bg-linear-to-r from-black to-white text-transparent bg-clip-text text-center uppercase font-bold text-sm sm:text-lg;
   }
+
+  .card {
+    @apply p-6 border-2 border-white/20 rounded-xl overflow-hidden bg-white/5;
+  }
 }
 
 .rotate-arc {

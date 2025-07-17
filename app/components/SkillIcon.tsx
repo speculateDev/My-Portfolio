@@ -2,12 +2,14 @@ import { ReactNode } from "react";
 
 interface SkillIconPrps {
   children: ReactNode;
-  className: string;
+  className?: string;
 }
 
 function SkillIcon({ className, children }: SkillIconPrps) {
   return (
-    <span className={`${className} p-2 inline-block rounded-full`}>
+    <span
+      className={`${className ? className : ""} p-2 inline-block rounded-full`}
+    >
       {children}
     </span>
   );
