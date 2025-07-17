@@ -41,9 +41,7 @@ function Skills() {
     <section id="skills" className="py-32 overflow-x-clip">
       <div className="sm-container">
         <p className="section-subtitle z-3">My Toolbox</p>
-        <h2 className="text-center text-3xl sm:text-5xl mt-4 font-bold">
-          My Skills
-        </h2>
+        <h2 className="section-title">My Skills</h2>
       </div>
 
       {/* Rings */}

@@ -74,6 +74,10 @@ body {
     @apply flex items-center justify-center;
   }
 
+  .section-title {
+    @apply text-center text-3xl sm:text-5xl mt-4 font-bold;
+  }
+
   .section-subtitle {
     @apply bg-linear-to-r from-black to-white text-transparent bg-clip-text text-center uppercase font-bold text-sm sm:text-lg;
   }

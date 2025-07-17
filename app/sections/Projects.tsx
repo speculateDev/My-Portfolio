@@ -52,9 +52,7 @@ function Projects() {
     <section className="py-28" id="projects">
       <div className="lg-container">
         <p className="section-subtitle">Crafted with Passion</p>
-        <h2 className="text-center text-3xl sm:text-5xl mt-4 font-bold">
-          Featured Projects
-        </h2>
+        <h2 className="section-title">Featured Projects</h2>
 
         <div className="flex flex-col gap-10 mt-10 md:mt-20">
           {projects.map((project, i) => (
