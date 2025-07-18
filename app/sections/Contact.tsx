@@ -69,6 +69,7 @@ function Contact() {
     } catch {
       toast.error("An error occurred. Please try again.");
     } finally {
+      setFormData(defaultFormVals);
       setIsPending(false);
     }
   }
@@ -96,6 +97,7 @@ function Contact() {
                 name="name"
                 type="text"
                 onChange={handleChange}
+                value={formData.name}
               />
 
               {errors?.name && (
@@ -118,6 +120,7 @@ function Contact() {
                 id="email"
                 name="email"
                 onChange={handleChange}
+                value={formData.email}
               />
 
               {errors?.email && (
@@ -140,6 +143,7 @@ function Contact() {
               id="message"
               name="message"
               onChange={handleChange}
+              value={formData.message}
             />
 
             {errors?.message && (
