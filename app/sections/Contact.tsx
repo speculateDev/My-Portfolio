@@ -1,4 +1,68 @@
+"use client";
+
+import { useState } from "react";
+import { contactSchema } from "../schemas";
+import { z } from "zod";
+import FormError from "../components/FormError";
+import toast from "react-hot-toast";
+
+const defaultFormVals = {
+  name: "",
+  email: "",
+  message: "",
+};
+
+type FormError = {
+  name?: string[];
+  email?: string[];
+  message?: string[];
+};
+
 function Contact() {
+  const [formData, setFormData] = useState(defaultFormVals);
+  const [errors, setErrors] = useState<FormError>({});
+
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    setErrors({});
+
+    const parsed = contactSchema.safeParse(formData);
+
+    if (!parsed.success) {
+      setErrors(z.flattenError(parsed.error).fieldErrors);
+      return;
+    }
+
+    const res = await fetch("/api/message", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(parsed.data),
+    });
+    const result = await res.json();
+
+    // Check if error
+    if (result.error) {
+      const { error } = result;
+
+      // if from inputs
+      if (result.code === 333) {
+        setErrors(error);
+      } else {
+        // If from rate limit or email opts
+        return toast.error(error);
+      }
+    }
+
+    if (result.success) toast.success(result.message);
+  }
+
   return (
     <section id="contact" className="py-28 md:py-32">
       <div className="lg-container border border-white/20 py-10 rounded-xl bg-white/5 px-8">
@@ -7,8 +71,8 @@ function Contact() {
           Have an idea? Let&apos;s turn it into reality.
         </p>
 
-        <form className="mt-8">
-          <div className="flex flex-col gap-3 md:gap-0 md:flex-row md:items-center md:justify-between">
+        <form onSubmit={handleSubmit} className="mt-8">
+          <div className="flex flex-col gap-3 md:gap-0 md:flex-row items-start md:justify-between">
             <div>
               <label
                 htmlFor="name"
@@ -21,7 +85,14 @@ function Contact() {
                 id="name"
                 name="name"
                 type="text"
+                onChange={handleChange}
               />
+
+              {errors?.name && (
+                <FormError>
+                  <span>{errors.name}</span>
+                </FormError>
+              )}
             </div>
 
             <div>
@@ -36,8 +107,14 @@ function Contact() {
                 className="border border-white/20 rounded-sm px-3 py-0.5 min-w-[400px] focus:outline-white/20 focus:outline-2 focus:outline-offset-3"
                 id="email"
                 name="email"
-                type="email"
+                onChange={handleChange}
               />
+
+              {errors?.email && (
+                <FormError>
+                  <span>{errors.email}</span>
+                </FormError>
+              )}
             </div>
           </div>
 
@@ -53,7 +130,14 @@ function Contact() {
               className="border border-white/20 rounded-sm px-3 py-0.5 min-w-[400px] focus:outline-white/20 focus:outline-2 focus:outline-offset-3"
               id="message"
               name="message"
+              onChange={handleChange}
             />
+
+            {errors?.message && (
+              <FormError>
+                <span>{errors.message}</span>
+              </FormError>
+            )}
           </div>
 
           <button
