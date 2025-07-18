@@ -3,12 +3,56 @@ import { z } from "zod";
 import nodemailer from "nodemailer";
 import { google } from "googleapis";
 
+const rateLimitMap = new Map<string, { count: number; lastRequest: number }>();
+const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+const RATE_LIMIT_MAX = 2; // Max 2 requests per minute
+
+function checkRateLimit(ip: string): {
+  allowed: boolean;
+  message?: string;
+} {
+  const now = Date.now();
+  const ipEl = rateLimitMap.get(ip);
+
+  if (ipEl) {
+    if (now - ipEl.lastRequest < RATE_LIMIT_WINDOW) {
+      if (ipEl.count > RATE_LIMIT_MAX) {
+        // Since the limit of count exceeded => not allowed
+        return { allowed: false, message: "Too many requests" };
+      }
+
+      // the count is not exceeded so +1 count
+      rateLimitMap.set(ip, { count: ipEl.count + 1, lastRequest: now });
+    } else {
+      // Since the time window is exceeded reset the ip
+      rateLimitMap.set(ip, { count: 1, lastRequest: now });
+    }
+  } else {
+    // Create a new element in the map since it does not exist
+    rateLimitMap.set(ip, { count: 1, lastRequest: now });
+  }
+
+  // Early return is bypassed so allowed after mutating the map
+  return { allowed: true };
+}
+
 export async function POST(req: Request) {
   if (req.method !== "POST") {
     return Response.json({ message: "Method not allowed" }, { status: 405 });
   }
 
   try {
+    const ip =
+      req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip");
+
+    // Apply rate limiting only if ip can be get from headers
+    if (ip) {
+      const { message, allowed } = checkRateLimit(ip);
+      if (!allowed) {
+        return Response.json({ error: message }, { status: 429 });
+      }
+    }
+
     const formData = await req.json();
     const parsed = contactSchema.safeParse(formData);
 
