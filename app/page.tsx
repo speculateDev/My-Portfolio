@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
 import Hero from "./sections/Hero";
@@ -20,6 +21,18 @@ export default function Page() {
       <Skills />
       <About />
       <Contact />
+
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          style: {
+            backgroundColor: "rgba(255, 255, 255, 0.05)",
+            border: "2px solid rgba(255, 255, 255, 0.3)",
+            color: "#fff",
+            minWidth: "300px",
+          },
+        }}
+      />
     </div>
   );
 }
