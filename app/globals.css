@@ -168,7 +168,7 @@ body {
 }
 
 ::selection {
-  background-color: #444;
+  background-color: rgba(68, 68, 68, 0.5);
 }
 
 .logo-icon {

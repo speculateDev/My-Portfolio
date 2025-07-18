@@ -5,6 +5,7 @@ import Hero from "./sections/Hero";
 import Navbar from "./sections/Navbar";
 import Projects from "./sections/Projects";
 import Skills from "./sections/Skills";
+import Footer from "./sections/Footer";
 
 export default function Page() {
   return (
@@ -21,6 +22,7 @@ export default function Page() {
       <Skills />
       <About />
       <Contact />
+      <Footer />
 
       <Toaster
         position="bottom-right"
