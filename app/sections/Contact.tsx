@@ -5,6 +5,7 @@ import { contactSchema } from "../schemas";
 import { z } from "zod";
 import FormError from "../components/FormError";
 import toast from "react-hot-toast";
+import SubmitBtn from "../components/SubmitBtn";
 
 const defaultFormVals = {
   name: "",
@@ -21,6 +22,7 @@ type FormError = {
 function Contact() {
   const [formData, setFormData] = useState(defaultFormVals);
   const [errors, setErrors] = useState<FormError>({});
+  const [isPending, setIsPending] = useState(false);
 
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -32,35 +34,43 @@ function Contact() {
     e.preventDefault();
 
     setErrors({});
+    setIsPending(true);
 
     const parsed = contactSchema.safeParse(formData);
 
     if (!parsed.success) {
       setErrors(z.flattenError(parsed.error).fieldErrors);
+      setIsPending(false);
       return;
     }
 
-    const res = await fetch("/api/message", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(parsed.data),
-    });
-    const result = await res.json();
+    try {
+      const res = await fetch("/api/message", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(parsed.data),
+      });
+      const result = await res.json();
 
-    // Check if error
-    if (result.error) {
-      const { error } = result;
+      // Check if error
+      if (result.error) {
+        const { error } = result;
 
-      // if from inputs
-      if (result.code === 333) {
-        setErrors(error);
-      } else {
-        // If from rate limit or email opts
-        return toast.error(error);
+        // if from inputs
+        if (result.code === 333) {
+          setErrors(error);
+        } else {
+          // If from rate limit or email opts
+          toast.error(error);
+        }
       }
-    }
 
-    if (result.success) toast.success(result.message);
+      if (result.success) toast.success(result.message);
+    } catch {
+      toast.error("An error occurred. Please try again.");
+    } finally {
+      setIsPending(false);
+    }
   }
 
   return (
@@ -117,7 +127,6 @@ function Contact() {
               )}
             </div>
           </div>
-
           <div className="mt-3 flex flex-col">
             <label
               htmlFor="message"
@@ -139,13 +148,11 @@ function Contact() {
               </FormError>
             )}
           </div>
-
-          <button
-            type="submit"
-            className="px-4 py-2 hover:bg-white hover:text-gray-950 border-2 border-white/50 font-medium cursor-pointer rounded-lg mt-4 transition-colors duration-500"
-          >
-            Send Message
-          </button>
+          <SubmitBtn
+            pendingLabel="Sending..."
+            label="Send Message"
+            isPending={isPending}
+          />
         </form>
       </div>
     </section>
