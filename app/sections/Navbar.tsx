@@ -72,6 +72,7 @@ function Navbar() {
         target="_blank"
         rel="noopener noreferrer"
         className="hidden sm:block left-[8%] size-10 absolute cursor-pointer"
+        aria-label="Visit GitHub profile"
       >
         <div className="absolute -inset-2 rotate-arc">
           <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
@@ -95,13 +96,17 @@ function Navbar() {
 
         <Image
           src={"/profile.svg"}
-          alt="profile picture"
+          alt="Profile picture"
           fill
           className="rounded-full"
         />
       </a>
 
-      <nav className="flex gap-1 bg-white/5 p-1 backdrop-blur border border-white/15 rounded-xl nav-row relative">
+      <nav
+        className="flex gap-1 bg-white/5 p-1 backdrop-blur border border-white/15 rounded-xl nav-row relative"
+        role="navigation"
+        aria-label="Main navigation"
+      >
         <div className="indicator fixed bottom-0 h-[2.5px] bg-linear-to-r from-white/30 to-white/80 rounded-md" />
 
         <a
@@ -110,53 +115,71 @@ function Navbar() {
           }`}
           href="#home"
           onClick={updateIndicator}
+          aria-label="Home"
+          aria-current={
+            activeSection === "#home" || activeSection === ""
+              ? "page"
+              : undefined
+          }
         >
-          <HomeIcon className="size-4 " />
+          <HomeIcon className="size-4" aria-hidden="true" />
+          <span className="sr-only">Home</span>
         </a>
 
         <div className="py-1.5">
           <span className="border-r border-white/20" />
         </div>
+
         <a
-          className={`nav-item tab flex gap-4 projects-nav items-center projects-nav ${
+          className={`nav-item tab flex gap-4 projects-nav items-center ${
             activeSection === "#projects" ? "active" : ""
           }`}
           href="#projects"
           onClick={updateIndicator}
+          aria-current={activeSection === "#projects" ? "page" : undefined}
         >
-          <Briefcase className="size-4" />
+          <Briefcase className="size-4" aria-hidden="true" />
           <span className="hidden md:inline">Projects</span>
+          <span className="sr-only md:hidden">Projects</span>
         </a>
+
         <a
           className={`nav-item tab skills-nav flex items-center gap-4 ${
             activeSection === "#skills" ? "active" : ""
           }`}
           href="#skills"
           onClick={updateIndicator}
+          aria-current={activeSection === "#skills" ? "page" : undefined}
         >
-          <Telescope className="size-4" />
+          <Telescope className="size-4" aria-hidden="true" />
           <span className="hidden md:inline">Skills</span>
+          <span className="sr-only md:hidden">Skills</span>
         </a>
+
         <a
-          className={`nav-item tab contact-nav flex items-center contact-nav gap-4 ${
+          className={`nav-item tab contact-nav flex items-center gap-4 ${
             activeSection === "#about" ? "active" : ""
           }`}
           href="#about"
           onClick={updateIndicator}
+          aria-current={activeSection === "#about" ? "page" : undefined}
         >
-          <Info className="size-4" />
+          <Info className="size-4" aria-hidden="true" />
           <span className="hidden md:inline">About</span>
+          <span className="sr-only md:hidden">About</span>
         </a>
 
         <a
-          className={`nav-item tab contact-nav flex items-center contact-nav gap-4 ${
+          className={`nav-item tab contact-nav flex items-center gap-4 ${
             activeSection === "#contact" ? "active" : ""
           }`}
           href="#contact"
           onClick={updateIndicator}
+          aria-current={activeSection === "#contact" ? "page" : undefined}
         >
-          <Send className="size-4" />
+          <Send className="size-4" aria-hidden="true" />
           <span className="hidden md:inline">Contact</span>
+          <span className="sr-only md:hidden">Contact</span>
         </a>
       </nav>
     </div>
