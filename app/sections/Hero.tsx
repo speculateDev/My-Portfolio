@@ -16,12 +16,14 @@ function Hero() {
           <strong className="">2+</strong> years of experience
         </div>
         <div className="flex flex-col items-center">
-          <div className="relative size-25 aspect-square rounded-full  outline-3 outline-white/30 outline-offset-4  ">
+          <div className="relative size-25 aspect-square rounded-full outline-3 outline-white/30 outline-offset-4">
             <Image
               fill
               className="rounded-full"
               src="/my-picture.jpg"
               alt="my Picture"
+              sizes="(max-width: 768px) 100px, 200px"
+              quality={70}
             />
           </div>
 
