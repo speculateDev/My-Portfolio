@@ -8,6 +8,15 @@
     "start": "next start",
     "lint": "next lint"
   },
+    "browserslist": [
+    "> 0.5%",
+    "last 2 versions", 
+    "not dead",
+    "not ie 11",
+    "not chrome < 60",
+    "not firefox < 60",
+    "not safari < 12"
+  ],
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "dotenv": "^17.2.0",
