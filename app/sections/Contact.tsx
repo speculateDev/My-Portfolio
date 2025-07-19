@@ -92,7 +92,7 @@ function Contact() {
                 Name
               </label>
               <input
-                className="border border-white/20 rounded-sm px-3 py-0.5 min-w-[400px] focus:outline-white/20 focus:outline-2 focus:outline-offset-3"
+                className="form-inpt"
                 id="name"
                 name="name"
                 type="text"
@@ -116,7 +116,7 @@ function Contact() {
               </label>
               <input
                 required
-                className="border border-white/20 rounded-sm px-3 py-0.5 min-w-[400px] focus:outline-white/20 focus:outline-2 focus:outline-offset-3"
+                className="form-inpt"
                 id="email"
                 name="email"
                 onChange={handleChange}
@@ -139,7 +139,7 @@ function Contact() {
             </label>
             <textarea
               required
-              className="border border-white/20 rounded-sm px-3 py-0.5 min-w-[400px] focus:outline-white/20 focus:outline-2 focus:outline-offset-3"
+              className="form-inpt"
               id="message"
               name="message"
               onChange={handleChange}
