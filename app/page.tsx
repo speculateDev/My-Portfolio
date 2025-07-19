@@ -13,7 +13,7 @@ export default function Page() {
       {/*  Grain bg */}
       <div
         className="absolute inset-0 -z-30 opacity-5"
-        style={{ backgroundImage: `url(/grain.jpg)` }}
+        style={{ backgroundImage: `url(/grain.webp)` }}
       ></div>
 
       <Navbar />

@@ -7,7 +7,7 @@ function Hero() {
       <div className="pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_60%,transparent)] -z-10">
         <div
           className="absolute inset-0 opacity-5 -z-30"
-          style={{ backgroundImage: `url(/pattern.png)` }}
+          style={{ backgroundImage: `url(/pattern.webp)` }}
         ></div>
       </div>
 

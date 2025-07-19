@@ -18,7 +18,7 @@ import Redux from "../../public/logos/redux.svg";
 
 function SkillsCard() {
   return (
-    <div className="card col-span-4 h-90">
+    <div className="card col-span-4 sm:h-90">
       <CardHeader text="My Tools" />
 
       <p className="text-white/40 text-sm mt-1 mb-8">

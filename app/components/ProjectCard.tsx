@@ -23,7 +23,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <h3 className="text-3xl font-geist font-medium">{project.title}</h3>
           <hr className="border-t-2 text-white/10 mt-3 md:mt-6" />
 
-          <ul className="flex flex-col gap-5 mt-2 md:mt-6">
+          <ul className="flex flex-col gap-2 sm:gap-5 mt-2 md:mt-6">
             {project.details.map((detail) => (
               <li
                 key={detail}
@@ -40,7 +40,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-3 border border-white/20 text-sm rounded-full hover:bg-white hover:text-black transition-colors duration-300 flex items-center gap-2 group"
+              className="flex gap-1 sm:gap-3 items-center px-2 sm:px-5 sm:py-3 border border-white/20 text-xs sm:text-sm rounded-full hover:bg-white hover:text-black transition-colors duration-300"
             >
               <span>Visit live site</span>
               <ArrowRight className="size-5 group-hover:rotate-60 transition duration-300" />
@@ -50,7 +50,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               target="_blank"
               rel="noopener noreferrer"
               href={project.repo}
-              className="flex gap-3 items-center  px-5 py-3 border border-white/20 text-sm rounded-full hover:bg-white hover:text-black transition-colors duration-300"
+              className="flex gap-1 sm:gap-3 items-center px-2 sm:px-5 py-3 border border-white/20 text-xs sm:text-sm rounded-full hover:bg-white hover:text-black transition-colors duration-300"
             >
               <span>Visit Repo</span>
               <Github className="size-5" />

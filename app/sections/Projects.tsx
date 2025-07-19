@@ -49,7 +49,7 @@ const projects = [
 
 function Projects() {
   return (
-    <section className="py-28" id="projects">
+    <section className="py-28 px-4" id="projects">
       <div className="lg-container">
         <p className="section-subtitle">Crafted with Passion</p>
         <h2 className="section-title">Featured Projects</h2>

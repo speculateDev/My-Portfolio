@@ -75,7 +75,7 @@ function Contact() {
   }
 
   return (
-    <section id="contact" className="py-28 md:py-32">
+    <section id="contact" className="py-28 md:py-32 px-4">
       <div className="lg-container border border-white/20 py-10 rounded-xl bg-white/5 px-8">
         <h2 className="section-title">Contact Me</h2>
         <p className="section-subtitle mt-2">
