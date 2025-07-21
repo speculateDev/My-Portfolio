@@ -13,13 +13,13 @@ interface Project {
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <div
-      className=" p-10 border-2 border-white/20 rounded-lg bg-[#101116] sticky overflow-hidden"
+      className="p-10 border-2 border-white/20 rounded-lg bg-[#101116] sticky overflow-hidden"
       style={{
         top: `calc(80px + ${index * 50}px)`,
       }}
     >
       <div className="lg:grid lg:grid-cols-2 lg:gap-5 lg:min-h-[450px]">
-        <div className="h-full flex flex-col">
+        <div className="h-full flex flex-col mb-5 lg:mb-0">
           <h3 className="text-3xl font-geist font-medium">{project.title}</h3>
           <hr className="border-t-2 text-white/10 mt-3 md:mt-6" />
 
