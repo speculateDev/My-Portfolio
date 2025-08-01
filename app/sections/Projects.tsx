@@ -45,6 +45,18 @@ const projects = [
     repo: "https://github.com/speculateDev/Saas-light-landing",
     image: "/project-4.png",
   },
+  {
+    title: "Socially",
+    details: [
+      "Real-time chat app, allows logged in users to send text, images, emojis",
+      "Levereged Next.js ecosystem to optimize SEO metric",
+      "Authentication through Auth.js",
+      "Uses redis for its speed to store data",
+    ],
+    link: "https://socials-two-mocha.vercel.app",
+    repo: "https://github.com/speculateDev/socials",
+    image: "/socially.png",
+  },
 ];
 
 function Projects() {
