@@ -2,6 +2,10 @@ import { contactSchema } from "../../schemas";
 import { z } from "zod";
 import nodemailer from "nodemailer";
 import { google } from "googleapis";
+import { Resend } from "resend";
+import EmailTemplate from "@/app/components/EmailTemplate";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const rateLimitMap = new Map<string, { count: number; lastRequest: number }>();
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
@@ -36,6 +40,63 @@ function checkRateLimit(ip: string): {
   return { allowed: true };
 }
 
+export async function POST(req: Request) {
+  if (req.method !== "POST") {
+    return Response.json({ message: "Method not allowed" }, { status: 405 });
+  }
+
+  try {
+    const ip =
+      req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip");
+
+    // Apply rate limiting only if ip can be get from headers
+    if (ip) {
+      const { message, allowed } = checkRateLimit(ip);
+      if (!allowed) {
+        return Response.json({ error: message }, { status: 429 });
+      }
+    }
+
+    const formData = await req.json();
+    const parsed = contactSchema.safeParse(formData);
+
+    if (!parsed.success) {
+      return Response.json(
+        {
+          message: "Invalid data provided",
+          error: z.flattenError(parsed.error).fieldErrors,
+          code: 333,
+        },
+        { status: 400 }
+      );
+    }
+
+    const { email, message, name } = parsed.data;
+
+    const { data, error } = await resend.emails.send({
+      from: process.env.RESEND_EMAIL!,
+      to: [process.env.GMAIL_USER!],
+      subject: `Message From portfolio <${email}>`,
+      react: EmailTemplate({ email, message, name }),
+    });
+
+    if (error) {
+      console.error({ error });
+      return Response.json({ error }, { status: 400 });
+    }
+
+    return Response.json({
+      message: "Message sent successfully!",
+      success: true,
+      data,
+    });
+  } catch (error) {
+    console.error("❌ Error sending email:", error);
+    return Response.json({ error: "Error sending email" }, { status: 500 });
+  }
+}
+
+/*
 export async function POST(req: Request) {
   if (req.method !== "POST") {
     return Response.json({ message: "Method not allowed" }, { status: 405 });
@@ -130,3 +191,4 @@ export async function POST(req: Request) {
     return Response.json({ error: "Error sending email" }, { status: 500 });
   }
 }
+*/
